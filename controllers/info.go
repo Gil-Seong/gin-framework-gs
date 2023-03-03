@@ -39,7 +39,7 @@ func ReadInfo(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"status": "ok",
-		"data":   "infoList",
+		"data":   infoList,
 	})
 }
 

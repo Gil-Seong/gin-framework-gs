@@ -1,0 +1,7 @@
+{"date":"2023-03-03T16:00:00.224+0900"}
+{"level":"info","ts":"2023-03-03T16:03:44.692+0900","caller":"gin-framework-gs/main.go:55","msg":"테스트입니다."}
+{"level":"info","ts":"2023-03-03T16:03:44.733+0900","caller":"gin-framework-gs/main.go:55","msg":"테스트입니다."}
+{"level":"info","ts":"2023-03-03T16:04:38.294+0900","caller":"gin-framework-gs/main.go:55","msg":"테스트입니다."}
+{"level":"info","ts":"2023-03-03T16:06:04.304+0900","caller":"gin-framework-gs/main.go:55","msg":"테스트입니다."}
+{"level":"info","ts":"2023-03-03T16:07:15.331+0900","caller":"gin-framework-gs/main.go:55","msg":"테스트입니다."}
+{"level":"info","ts":"2023-03-03T16:07:15.354+0900","caller":"gin-framework-gs/main.go:55","msg":"테스트입니다."}

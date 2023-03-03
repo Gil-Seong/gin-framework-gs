@@ -54,7 +54,7 @@ func VerifyRefreshToken(c *gin.Context) {
 	fmt.Println(htoken)
 
 	if htoken == "" {
-		c.JSON(401, gin.H{
+		c.AbortWithStatusJSON(401, gin.H{
 			"status":  401,
 			"message": "token is None.",
 		})
@@ -64,7 +64,7 @@ func VerifyRefreshToken(c *gin.Context) {
 	fmt.Println(htoken)
 
 	if htoken == "" {
-		c.JSON(401, gin.H{
+		c.AbortWithStatusJSON(401, gin.H{
 			"status":  401,
 			"message": "refresh token is None. (다시 로그인하세요.)",
 		})
@@ -78,7 +78,7 @@ func VerifyRefreshToken(c *gin.Context) {
 	})
 
 	if err != nil {
-		c.JSON(401, gin.H{
+		c.AbortWithStatusJSON(401, gin.H{
 			"status":  401,
 			"message": "refreshToken이 만료되었습니다. 다시 로그인하세요.",
 		})
@@ -105,7 +105,7 @@ func VerifyAccessToken(c *gin.Context) {
 	fmt.Println(htoken)
 
 	if htoken == "" {
-		c.JSON(401, gin.H{
+		c.AbortWithStatusJSON(401, gin.H{
 			"status":  401,
 			"message": "token is None.",
 		})
@@ -119,7 +119,7 @@ func VerifyAccessToken(c *gin.Context) {
 	})
 
 	if err != nil {
-		c.JSON(401, gin.H{
+		c.AbortWithStatusJSON(401, gin.H{
 			"status":  401,
 			"message": "토큰 인증 실패. 토큰을 재발급 받으세요.(한번 재발급 받았다면 다시 로그인 그렇지않다면 재발급요청)", // Client에서 이 메세지를 받고 accessToken을 재발급 받기위해 refreshToken을 보내며 재발급 요청.
 		})
@@ -144,7 +144,7 @@ func CreateReissuanceToken(c *gin.Context) {
 	fmt.Println(htoken)
 
 	if htoken == "" {
-		c.JSON(401, gin.H{
+		c.AbortWithStatusJSON(401, gin.H{
 			"status":  401,
 			"message": "token is None.",
 		})
@@ -168,7 +168,7 @@ func CreateReissuanceToken(c *gin.Context) {
 	accessToken, err := CreateAccessToken(Name, IsManager)
 
 	if err != nil {
-		c.JSON(500, gin.H{
+		c.AbortWithStatusJSON(500, gin.H{
 			"status":  500,
 			"message": "accessToken 생성중 에러",
 		})

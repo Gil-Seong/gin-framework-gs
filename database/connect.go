@@ -3,6 +3,8 @@ package database
 import (
 	"gin-framework-gs/models"
 
+	"gin-framework-gs/config"
+
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 
@@ -13,7 +15,8 @@ var DB *gorm.DB
 
 func ConnectDatabase() {
 	var err error
-	DB, err = gorm.Open("mysql", "root:wjd0606@@@tcp(127.0.0.1:3306)/golang?charset=utf8&parseTime=True&loc=Asia%2FSeoul")
+	dbConnection := config.RuntimeConf.Datasource.UserName + ":" + config.RuntimeConf.Datasource.Password + "@tcp(" + config.RuntimeConf.Datasource.Url + ")/golang?charset=utf8&parseTime=True&loc=Asia%2FSeoul"
+	DB, err = gorm.Open("mysql", dbConnection)
 	if err != nil {
 		panic(err)
 	}

@@ -1,0 +1,7 @@
+datasource:
+  dbType: "mysql"
+  url: "localhost:3306"
+  userName: "root"
+  password: "wjd0606@@"
+server:
+  port: 8080
