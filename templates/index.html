@@ -4,6 +4,8 @@
 
 <h1>Hello Gin!</h1>
 <h2>{{.title}}</h2>
-<h3>{{.message}}</h3>
+{{range .urlPath}}
+<li>{{ .Method }} {{ .Path }}</li>
+{{end}}
 
 <!--Embed the footer.html template at this location-->

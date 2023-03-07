@@ -1,0 +1,41 @@
+definitions:
+  routers.User:
+    properties:
+      age:
+        description: 나이
+        example: 10
+        type: integer
+      id:
+        description: 유저ID
+        example: 1
+        type: integer
+      name:
+        description: 이름
+        example: John
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/hello/{name}:
+    get:
+      consumes:
+      - application/json
+      description: 상세한 설명 기재
+      parameters:
+      - description: User name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/routers.User'
+        "400":
+          description: Bad Request
+      summary: 요약 기재
+swagger: "2.0"
