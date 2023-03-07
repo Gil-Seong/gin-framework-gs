@@ -5,21 +5,24 @@ import (
 	"gin-framework-gs/database"
 	"gin-framework-gs/lib/jwt"
 	"html/template"
-	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
+var router *gin.Engine
+
 func NewServer() *gin.Engine {
 
 	// router := gin.New() // 커스텀이 필요하다면 New를 사용
-	router := gin.Default()
+	router = gin.Default()
 	database.ConnectDatabase()
 
 	router.SetFuncMap(template.FuncMap{})
 	router.LoadHTMLGlob("templates/*.html")
 	// router.LoadHTMLGlob("templates/*")
+
+	swaggerConfig()
 
 	router.GET("/", func(context *gin.Context) {
 		context.HTML(http.StatusOK, "index.html", gin.H{
@@ -48,27 +51,7 @@ func NewServer() *gin.Engine {
 	}
 
 	return router
-}
 
-func TokenAuthMiddleware(c *gin.Context) {
-	authToken := c.Request.Header.Get("auth-token")
-	if authToken == "" {
-		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
-			"message": "No token",
-		})
-		return
-	}
-
-	if authToken != "secret-token" {
-		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
-			"message": "Invalid token",
-		})
-		return
-	}
-
-	log.Println("authenticateMiddleware passing")
-	c.Next()
-	log.Println("authenticateMiddleware passed already")
 }
 
 // func (c *gin.Context) Next() // 미들웨어 내에서만 사용, 호출 핸들러 내부의 체인에서 보류 중인 핸들러를 실행한다.

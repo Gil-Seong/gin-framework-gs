@@ -181,3 +181,7 @@ func CreateReissuanceToken(c *gin.Context) {
 	})
 	return
 }
+
+// func (c *gin.Context) Next() // 미들웨어 내에서만 사용, 호출 핸들러 내부의 체인에서 보류 중인 핸들러를 실행한다.
+// func (c *gin.Context) Abort() // 보류 중인 핸들러 호출을 방지한다. -> 여기서 response를 주고 다음 실행 예정인 핸들러를 실행시키지 않고 종료한다고 볼 수 있다.
+// func (c *gin.Context) AbortWithStatusJSON(code int, json any) // Abort()호출 후 JSON을 호출한다. c.Abort() 후 c.JSON(code, json)
